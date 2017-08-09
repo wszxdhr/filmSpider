@@ -61,3 +61,24 @@ export let getJsonLength = (jsonData) => {
   }
   return arr.length
 }
+
+// 睡眠
+export let sleep = (time) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}
+
+// 分析URL
+export let parseUrl = (url) => {
+  let reg = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
+  let result = {}
+  let regResult = reg.exec(url)
+  let fields = ['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash']
+  fields.forEach(function (field, i) {
+    result[field] = regResult[i]
+  })
+  return result
+}

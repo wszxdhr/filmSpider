@@ -7,6 +7,7 @@ import {
 import path from 'path'
 import MainRoutes from './routes/main-routes'
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
+import FilmSpider from './controllers/FilmSpider'
 import ErrorRoutes from './routes/error-routes'
 import jwt from 'koa-jwt'
 import fs from 'fs'
@@ -60,5 +61,8 @@ if (env === 'development') { // logger
 app.listen(SystemConfig.API_server_port)
 
 console.log('Now start API server on port ' + SystemConfig.API_server_port + '...')
+
+// 执行爬虫
+FilmSpider()
 
 export default app
