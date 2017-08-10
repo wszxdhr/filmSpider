@@ -67,8 +67,12 @@ export default {
       let dlLink = []
       $('#Zoom a').each(function () {
         let attr = $(this)
-        if (attr[0].attribs.href.indexOf('ftp://') !== -1) {
-          dlLink.push({link: attr[0].attribs.href, title})
+        if (attr[0].attribs) {
+          if (attr[0].attribs.href) {
+            if (attr[0].attribs.href.indexOf('ftp://') !== -1) {
+              dlLink.push({link: attr[0].attribs.href, title})
+            }
+          }
         }
       })
       result = result.concat(dlLink)
